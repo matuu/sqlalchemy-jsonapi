@@ -364,8 +364,7 @@ class JSONAPI(object):
             local_fields = orm_desc_keys
 
         for key, relationship in instance.__mapper__.relationships.items():
-            attrs_to_ignore |= set([c.name for c in relationship.local_columns
-                                    ]) | {key}
+            attrs_to_ignore |= {key}
 
             api_key = instance.__jsonapi_map_to_api__[key]
 
